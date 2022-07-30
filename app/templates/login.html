@@ -1,0 +1,21 @@
+{% extends './layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Login</h1>
+    <form action="/auth/login" method="POST">
+        <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" name="inputEmail" id="inputEmail" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" name="inputPassword" id="inputPassword">
+        </div>
+        <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Register Here.</a></p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,340 @@
+{% extends './layout.html' %}
+
+{% block content %}
+
+<!-- BEGIN VIDEO -->
+<div class="video-wrapper">
+    <video width="100%" height="700" autoplay muted>
+        <source src="{{ url_for('static', filename='images/One Solution Per Day Final Video.mp4') }}" class="video">
+        Your browser does not support the video tag.
+        
+    </video>
+</div>
+<!-- END VIDEO -->
+<div class="wrapper">
+    <!-- BEGIN ISSUE OF THE DAY -->
+    <main>
+        <div class="issue-of-the-day-margin">
+
+            <div class="issue-of-the-day-wrapper">
+
+                <div class="issue-of-the-day">
+                    <div class="project-title">
+                        WELCOME BACK, {{ current_user.username }} - PROJECT OF THE DAY
+                        <p class="subheading">{{today_date}}</p>
+                    </div>
+                    <div class="project-of-the-day">
+                        {% for p in projects %}
+                        {% if p.target_date == today_date %}
+                        <div class="project-left">
+
+                            <div> <b>THE PROBLEM</b> </div>
+                            
+                            <div>{{ p.problem }}</div>
+                            <div><br><b>THE ACTION/WHAT WILL WE DO?</b></div>
+                            <div>{{ p.action }}</div>
+                            
+                            <div><br><b>GOAL</b></div>
+                            <div>
+                                {{ p.goal }}
+                            </div>
+                            <div><br><b>LEARN MORE</b></div>
+                            <div>
+                                Learn more <a href="{{ p.resource }}">HERE</a> <br> 
+                                
+                            </div>
+
+                        </div>
+                        <div class="project-right">
+                            <div class="issue-of-the-day-image">
+                                <img src="{{ p.image_link }}">
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END ISSUE OF THE DAY -->
+        <!-- BEGIN THE PROCESS -->
+        <div class="the-process-margin">
+            <div class="the-process-wrapper">
+                <div class="the-process-text">
+                    THE PROBLEM-SOLVING PROCESS
+                </div>
+
+                <div class="the-process">
+                    <div class="process-container">
+                        <div class="box">
+                            <img src="{{ url_for('static', filename='images/diagnose.jpg') }}">
+                            <span>Identify Problem</span>
+                        </div>
+                        <div class="box">
+                            <img src="{{ url_for('static', filename='images/focus3.avif') }}">
+                            <span>Focus Attention</span>
+                        </div>
+                        <div class="box">
+                            <img src="{{ url_for('static', filename='images/cooperation.jpg') }}">
+                            <span>Act Together</span>
+                        </div>
+                        <div class="box">
+                            <img src="{{ url_for('static', filename='images/results.png') }}">
+                            <span>Track Results</span>
+                        </div>
+                        <div class="box">
+                            <img src="{{ url_for('static', filename='images/checklist.webp') }}">
+                            <span>Repeat</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- END THE PROCESS -->
+        <!-- BEGIN UPCOMING PROJECTS -->
+        <div class="next-week-issues-margin">
+            <div class="next-week-issues-wrapper">
+                <div class="next-week-issues">
+                    <h1>UPCOMING PROJECTS</h1>
+                    <div>
+                        <ul class="timeline-animation">
+                            <li>
+                                <div class="animation-container">
+                                    <time>DAY 1</time>
+
+                                    <div>
+                                    
+                                        {% for p in projects %}
+                                            {% if p.target_date == today_date %}
+                                                <h1>{{ p.problem }}</h1>
+                                                <div><br><b>THE ACTION/WHAT WILL WE DO?</b></div>
+                                                {{ p.action }}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+
+                                    <img src="{{ url_for('static', filename='images/winter_coats.jpg') }}" alt="winter coats"
+                                        class="upcoming-issues-image">
+                                    <p class="animation-text"> <b>PROBLEM</b> <br>
+                                        Children living in poverty often do not have warm winter coats. <br>
+                                        <b>ACTION</b><br>
+                                        Go through your closet and donate winter clothes to a school or goodwill.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <time>DAY 2</time>
+                                    <img src="{{ url_for('static', filename='images/elderly.jfif') }}" alt="elderly" class="upcoming-issues-image">
+                                    <p class="animation-text"> <b>PROBLEM</b> <br>
+                                        Many elderly are feeling isolated during the pandemic. <br>
+                                        <b>ACTION</b><br>
+                                        Call an elderly member of your family today.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <time>DAY 3</time>
+                                    <img src="{{ url_for('static', filename='images/climate_change.svg') }}" alt="climate" class="upcoming-issues-image">
+                                    <p class="animation-text"> <b>PROBLEM</b> <br>
+                                        Climate change is an existential crisis. <br>
+                                        <b>ACTION</b><br>
+                                        Use the supplied template to write your congresspeople today.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <time>DAY 4</time>
+                                    <img src="{{ url_for('static', filename='images/vote.webp') }}" alt="vote" class="upcoming-issues-image">
+                                    <p class="animation-text"> <b>PROBLEM</b> <br>
+                                        Democracy is the worst sytem out there, except for all the others. <br>
+                                        <b>ACTION</b><br>
+                                        Find someone in your sphere who is not currently registered to vote and help
+                                        them get registered today.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <time>DAY 5</time>
+                                    <img src="{{ url_for('static', filename='images/shelter.jpg') }}" alt="shelter" class="upcoming-issues-image">
+                                    <p class="animation-text"> <b>PROBLEM</b> <br>
+                                        Many women with young children end up in shelters due to abuse, neglect, or
+                                        other challenges. <br>
+                                        <b>ACTION</b><br>
+                                        Donate clothes, baby supplies, diapers to a women's shelter.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <time>DAY 6</time>
+                                    <img src="{{ url_for('static', filename='images/Family-Eating2.jpg') }}" alt="family-eating"
+                                        class="upcoming-issues-image">
+                                    <p class="animation-text"> <b>PROBLEM</b> <br>
+                                        Families and friends are struggling to feel intimately connected in this age of
+                                        technology. <br>
+                                        <b>ACTION</b><br>
+                                        Spend one meal with your people without any phones, tv, or other technology.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <time>DAY 7</time>
+                                    <img src="{{ url_for('static', filename='images/buy_local.png') }}" alt="buy-local" class="upcoming-issues-image">
+                                    <p class="animation-text"> <b>PROBLEM</b> <br>
+                                        According to Yelp data, 97,966 small businesses have permanently closed during
+                                        the Covid pandemic.<br>
+                                        <b>ACTION</b><br>
+                                        Buy something locally that you would usually go online for.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END NEXT WEEK ISSUES -->
+        <!-- BEGIN STATS -->
+        <div class="stats-margin">
+            <div class="stats-wrapper">
+                <div class="stats-text">
+                    RESULTS
+                </div>
+                <div class="stats-outer">
+
+                    <div class="stats-inner-wrapper">
+                        <div class="inner1">
+
+                            <div class="stats">
+                                
+                                <div class="issues-addressed">
+                                    PROJECTS ADDRESSED
+                                </div>
+                                
+                            </div>
+                            <div class="stats-image-row">
+                                <div>
+                                    <img src="{{ url_for('static', filename='images/issues2.jfif') }}" class="a">
+                                </div>
+                                
+                            </div>
+                            <div class="stats-numbers">
+                                <div>158</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats-inner-wrapper">
+                        <div class="inner2">
+
+                            <div class="stats">
+                                <div class="num-users">
+                                    NUMBER OF USERS
+                                </div>
+                            </div>
+                            <div class="stats-image-row">
+                                <div>
+                                    <img src="{{ url_for('static', filename='images/users.jpg') }}" class="b">
+                                </div>
+                            </div>
+                            <div class="stats-numbers">
+                                <div>6,342</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats-inner-wrapper">
+                        <div class="inner3">
+
+                            <div class="stats">
+                                <div class="actions-reported">
+                                    ACTIONS REPORTED
+                                </div>
+                            </div>
+                            <div class="stats-image-row">
+                                <div>
+                                    <img src="{{ url_for('static', filename='images/actions_taken.jpg') }}" class="c">
+                                </div>
+                            </div>
+                            <div class="stats-numbers">
+                                <div>13,879</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END STATS -->
+        <!-- BEGIN USER MAP -->
+        <div class="user-map-margin">
+            <div class="user-map-wrapper">
+
+                <div class="user-map">
+                    USER LOCATION DATA
+                </div>
+                <div class="map">
+                    <iframe
+                        src="https://www.google.com/maps/d/u/0/embed?mid=1U2XK-5pP7YDjvC0sqeBKzX-WcPG8tK4&ehbc=2E312F"
+                        width=100% height="680"></iframe>
+                </div>
+
+            </div>
+        </div>
+        <!-- END USER MAP -->
+        <!-- BEGIN PAST PROJECTS -->
+        <div class="past-projects-margin">
+            <div class="past-projects-wrapper">
+
+                <div class="past-projects">
+                    VIEW PAST PROJECTS
+                </div>
+
+                <div class="past-projects-images">
+                    
+                </div>
+            </div>
+
+        </div>
+        <!-- END PAST PROJECTS -->
+        <!-- BEGIN SUGGESTION FORM -->
+        <div class="suggest-margin">
+            <div class="suggest-wrapper">
+
+                <div class="suggest">
+                    SUGGEST A PROJECT
+                    FORM
+                </div>
+                <div class="suggest-box">
+                    <form action="http://127.0.0.1:5000/api/create_post" method="POST" class="suggest-form">
+                        <div class="mb-3">
+                            <label for="Problem" class="form-label">PROBLEM</label>
+                            <input type="text" class="form-control" name="statusInput" placeholder="Input problem to be addressed" id="InputProblem">
+                        </div><br>
+                        <div class="mb-3">
+                            <label for="Action" class="form-label">ACTION</label>
+                            <input type="text" class="form-control" name="statusInput" placeholder="Input suggested action"
+                                id="InputAction">
+                        </div><br>
+                        <div class="mb-3">
+                            <label for="Resource" class="form-label">RESOURCE</label>
+                            <input type="text" class="form-control" name="statusInput" placeholder="Input URL for further reading"
+                                id="InputProblem">
+                        </div><br>
+                        <div class="row">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- END SUGGESTION FORM -->
+</div>
+{% endblock content %}

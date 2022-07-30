@@ -1,0 +1,123 @@
+<footer>
+    <div class="footer-wrapper">
+        <div class="logo-and-form">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/one_solution_logo.jpg') }}">
+            </div>
+            <div class="form">
+                <style>
+                    * {
+                        box-sizing: border-box;
+                    }
+
+                    input[type=text],
+                    select,
+                    textarea {
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #D9D9D9;
+                        border-radius: 4px;
+                        resize: vertical;
+                    }
+
+                    label {
+                        padding: 12px 12px 12px 0;
+                        display: inline-block;
+                    }
+
+                    input[type=submit] {
+                        background-color: #737373;
+                        color: white;
+                        padding: 12px 20px;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        float: right;
+                    }
+
+                    input[type=submit]:hover {
+                        background-color: #A6A6A6;
+                    }
+
+                    .container {
+                        border-radius: 5px;
+                        background-color: #D9D9D9;
+                        padding: 20px;
+                    }
+
+                    .col-25 {
+                        float: left;
+                        width: 25%;
+                        margin-top: 6px;
+                    }
+
+                    .col-75 {
+                        float: left;
+                        width: 75%;
+                        margin-top: 6px;
+                    }
+
+                    /* Clear floats after the columns */
+                    .row:after {
+                        content: "";
+                        display: table;
+                        clear: both;
+                    }
+
+                    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+                    @media screen and (max-width: 600px) {
+
+                        .col-25,
+                        .col-75,
+                        input[type=submit] {
+                            width: 100%;
+                            margin-top: 0;
+                        }
+                    }
+                </style>
+                <div class="footer-text">
+
+                    <h2>GET DAILY UPDATES</h2>
+                    <p>Stay connected. Be among the first to hear of new projects. Never miss exciting results!</p>
+                </div>
+
+                <div class="container">
+                    <form action="/action_page.php">
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="fname">EMAIL:</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="fname" name="firstname" placeholder="email@sample.com">
+                            </div>
+                        </div>
+
+
+                        <br>
+                        <div class="row">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-links">
+            <ul class="footer-list">
+                <li><a href="index.html">HOME</a></li>
+                <li class="grey-dash">|</li>
+                <li><a href="projects.html">PROJECTS</a></li>
+                <li class="grey-dash">|</li>
+                <li><a href="community.html">COMMUNITY</a></li>
+                <li class="grey-dash">|</li>
+                <li><a href="calendar.html">ISSUE CALENDAR</a></li>
+                <li class="grey-dash">|</li>
+                <li><a href="results.html">RESULTS</a></li>
+                <li class="grey-dash">|</li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+
