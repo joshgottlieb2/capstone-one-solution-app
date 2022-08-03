@@ -4,7 +4,7 @@ from app.blueprints.main.models import Project
 from flask_login import current_user
 from app import db
 
-user = current_user.id
+
  
 @app.route("/create_post", methods=["POST"])
 def suggest():

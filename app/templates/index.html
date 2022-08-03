@@ -20,7 +20,11 @@
 
                 <div class="issue-of-the-day">
                     <div class="project-title">
-                        WELCOME BACK, {{ current_user.username }} - PROJECT OF THE DAY
+                        {% if current_user.username != null %}
+                            WELCOME BACK, {{ current_user.username.upper() }}! - PROJECT OF THE DAY
+                        {% else %}
+                            PROJECT OF THE DAY
+                        {% endif %}
                         <p class="subheading">{{today_date}}</p>
                     </div>
                     <div class="project-of-the-day">
@@ -100,23 +104,11 @@
                     <h1>UPCOMING PROJECTS</h1>
                     <div>
                         <ul class="timeline-animation">
+                            
                             <li>
-                                <div class="animation-container">
+                                <div>
                                     <time>DAY 1</time>
-
-                                    <div>
-                                    
-                                        {% for p in projects %}
-                                            {% if p.target_date == today_date %}
-                                                <h1>{{ p.problem }}</h1>
-                                                <div><br><b>THE ACTION/WHAT WILL WE DO?</b></div>
-                                                {{ p.action }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-
-                                    <img src="{{ url_for('static', filename='images/winter_coats.jpg') }}" alt="winter coats"
-                                        class="upcoming-issues-image">
+                                    <img src="{{ url_for('static', filename='images/winter_coats.jpg') }}" alt="winter coats" class="upcoming-issues-image">
                                     <p class="animation-text"> <b>PROBLEM</b> <br>
                                         Children living in poverty often do not have warm winter coats. <br>
                                         <b>ACTION</b><br>
@@ -295,10 +287,9 @@
                 <div class="past-projects">
                     VIEW PAST PROJECTS
                 </div>
-
-                <div class="past-projects-images">
-                    
-                </div>
+                <!-- CALENDAR START -->
+                
+                <!-- CALENDAR END -->
             </div>
 
         </div>
@@ -325,7 +316,7 @@
                         <div class="mb-3">
                             <label for="Resource" class="form-label">RESOURCE</label>
                             <input type="text" class="form-control" name="statusInput" placeholder="Input URL for further reading"
-                                id="InputProblem">
+                                id="InputResource">
                         </div><br>
                         <div class="row">
                             <input type="submit" value="Submit">
@@ -337,4 +328,7 @@
     </main>
     <!-- END SUGGESTION FORM -->
 </div>
+
+
+
 {% endblock content %}

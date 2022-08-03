@@ -2,20 +2,29 @@
 
 {% block content %}
 
-<div class="container">
-    <h1>Login</h1>
-    <form action="/auth/login" method="POST">
-        <div class="form-group">
-            <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" name="inputEmail" id="inputEmail" aria-describedby="emailHelp">
+<div class="suggest-margin">
+    <div class="suggest-wrapper">
+        <div class="login">
+            LOGIN
         </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" name="inputPassword" id="inputPassword">
+        <div class="suggest-box">
+            <form action="/auth/login" method="POST" class="suggest-form">
+                <div class="mb-3">
+                    <label for="Email" class="field">EMAIL ADDRESS</label>
+                    <input type="text" class="form-control" name="inputEmail" id="inputEmail" placeholder="Input Email Address">
+                </div><br>
+                <div class="mb-3">
+                    <label for="Password" class="form-label">PASSWORD</label>
+                    <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Input Password">
+                </div><br>
+                <div class="row">
+                    <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Register Here.</a></p>
+                    <input type="submit" value="Submit">
+                </div>
+                
+            </form>
         </div>
-        <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Register Here.</a></p>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>
 
 {% endblock content %}

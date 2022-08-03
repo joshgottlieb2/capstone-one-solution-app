@@ -51,18 +51,18 @@ def register():
                 city = wtform.city.data
                 state = wtform.state.data
 
-                if request.form['inputPassword']:    
+                if password:    
                     new_user = User(
-                        email=request.form['inputEmail'],
+                        email=email,
                         password='',
-                        username=request.form['inputUsername'],
-                        first_name=request.form['inputFirstName'],
-                        last_name=request.form['inputLastName'],
-                        city=request.form['inputCity'],
-                        state=request.form['inputState'],
+                        username=username,
+                        first_name=first_name,
+                        last_name=last_name,
+                        city=city,
+                        state=state,
                         )
 
-                    new_user.hash_my_password(request.form['inputPassword'])
+                    new_user.hash_my_password(password)
                     db.session.add(new_user)
                     db.session.commit()
     
