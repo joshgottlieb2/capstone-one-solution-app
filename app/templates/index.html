@@ -98,6 +98,7 @@
         </div>
         <!-- END THE PROCESS -->
         <!-- BEGIN UPCOMING PROJECTS -->
+        <a id="upcoming"></a>
         <div class="next-week-issues-margin">
             <div class="next-week-issues-wrapper">
                 <div class="next-week-issues">
@@ -195,6 +196,7 @@
         </div>
         <!-- END NEXT WEEK ISSUES -->
         <!-- BEGIN STATS -->
+        <a id="results">
         <div class="stats-margin">
             <div class="stats-wrapper">
                 <div class="stats-text">
@@ -265,6 +267,7 @@
         </div>
         <!-- END STATS -->
         <!-- BEGIN USER MAP -->
+        <a id="users">
         <div class="user-map-margin">
             <div class="user-map-wrapper">
 
@@ -281,20 +284,45 @@
         </div>
         <!-- END USER MAP -->
         <!-- BEGIN PAST PROJECTS -->
+        <a id="past">
         <div class="past-projects-margin">
             <div class="past-projects-wrapper">
-
                 <div class="past-projects">
                     VIEW PAST PROJECTS
                 </div>
-                <!-- CALENDAR START -->
-                
-                <!-- CALENDAR END -->
+                <div class="projects-subheading">
+                    Once you have completed an action, check "COMPLETED ACTION" below.
+                </div>
+                <!-- TABLE START -->
+                <div class="projects-container">
+                    <table id="projects-table">
+                        <tr class="table-headers">
+                            <th class="hidden-table">PROBLEMS ADDRESSED</th>
+                            <th>ACTIONS TAKEN</th>
+                            <th class="hidden-table">RESULTS</th>
+                            <th>COMPLETED ACTION</th>
+                        </tr>
+                        {% for p in projects %}
+                            <tr id="table-rows">
+                                <td class="hidden-table">{{ p.problem }}</td>
+                                <td>{{ p.action }}</td>
+                                <td class="hidden-table">{{ p.goal }}</td>
+                                <td>
+                                    <div class="check">
+                                        <input type="checkbox">
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <!-- TABLE END -->
             </div>
 
         </div>
         <!-- END PAST PROJECTS -->
         <!-- BEGIN SUGGESTION FORM -->
+        <a id="suggest">
         <div class="suggest-margin">
             <div class="suggest-wrapper">
 
@@ -303,19 +331,19 @@
                     FORM
                 </div>
                 <div class="suggest-box">
-                    <form action="http://127.0.0.1:5000/api/create_post" method="POST" class="suggest-form">
+                    <form action="http://127.0.0.1:5000/api/suggest" method="POST" class="suggest-form">
                         <div class="mb-3">
-                            <label for="Problem" class="form-label">PROBLEM</label>
-                            <input type="text" class="form-control" name="statusInput" placeholder="Input problem to be addressed" id="InputProblem">
+                            <label for="inputProblem" class="form-label">PROBLEM</label>
+                            <input type="text" class="form-control" name="inputProblem" placeholder="Input problem to be addressed" id="InputProblem">
                         </div><br>
                         <div class="mb-3">
-                            <label for="Action" class="form-label">ACTION</label>
-                            <input type="text" class="form-control" name="statusInput" placeholder="Input suggested action"
+                            <label for="inputAction" class="form-label">ACTION</label>
+                            <input type="text" class="form-control" name="inputAction" placeholder="Input suggested action"
                                 id="InputAction">
                         </div><br>
                         <div class="mb-3">
-                            <label for="Resource" class="form-label">RESOURCE</label>
-                            <input type="text" class="form-control" name="statusInput" placeholder="Input URL for further reading"
+                            <label for="inputResource" class="form-label">RESOURCE</label>
+                            <input type="text" class="form-control" name="inputResource" placeholder="Input URL for further reading"
                                 id="InputResource">
                         </div><br>
                         <div class="row">

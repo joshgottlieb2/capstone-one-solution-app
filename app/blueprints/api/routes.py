@@ -1,22 +1,26 @@
-from flask import jsonify, request, redirect, flash, url_for
+from flask import jsonify, render_template, request, redirect, flash, url_for
 from . import bp as app
-from app.blueprints.main.models import Project
 from flask_login import current_user
 from app import db
-
+from app.blueprints.main.models import Suggest
 
  
-@app.route("/create_post", methods=["POST"])
+@app.route("/suggest", methods=["POST"])
 def suggest():
-    status_input_problem = request.form['statusInputProblem']
-    status_input_action = request.form['statusInputAction']
-    status_input_resource = request.form['statusInputResource']
     
-    user = current_user.id
+    if current_user is None:
+        flash(f'User must be logged in to use suggestion form.', 'danger')
+        return redirect(url_for('login.html'))
+    else:
+        print(request.form)
+        problem = request.form['inputProblem']
+        action = request.form['inputAction']
+        resource = request.form['inputResource']
+        
+        suggest = Suggest(problem=problem, action=action, resource=resource)
 
-    new_project = Project(problem=status_input_problem, action=status_input_action, resource=status_input_resource, user_id=user)
+        db.session.add(suggest)
+        db.session.commit()
+        flash('New suggested project added successfully', 'success')
+        return redirect(url_for('main.home'))
 
-    db.session.add(new_project)
-    db.session.commit()
-    flash('New suggested project added successfully', 'success')
-    return redirect(url_for('main.home'))

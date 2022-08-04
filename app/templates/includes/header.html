@@ -4,18 +4,18 @@
             <li class="grey-dash">|</li>
             <li><a href="{{ url_for('main.home') }}">HOME</a></li>
             <li class="grey-dash">|</li>
-            <li><a href="{{ url_for('main.past_projects') }}">PROJECTS</a></li>
-            <li class="grey-dash">|</li>
-            <li><a href="{{ url_for('main.community') }}">COMMUNITY</a></li>
-            <li class="grey-dash">|</li>
-            <li><a href="{{ url_for('main.calendar') }}">ISSUE CALENDAR</a></li>
-            <li class="grey-dash">|</li>
-            <li><a href="{{ url_for('main.results') }}">RESULTS</a></li>
-            <li class="grey-dash">|</li>
-            <li><a href="{{ url_for('main.contact_us') }}">CONTACT US</a></li>
-            <li class="grey-dash">|</li>
-            <li class="spacer"></li>
-            <li class="grey-dash">|</li>
+            <li id="disappear"><a href="#upcoming">UPCOMING</a></li>
+            <li id="disappear" class="grey-dash">|</li>
+            <li id="disappear"><a href="#results">RESULTS</a></li>
+            <li id="disappear" class="grey-dash">|</li>
+            <li id="disappear"><a href="#users">USERS</a></li>
+            <li id="disappear" class="grey-dash">|</li>
+            <li id="disappear"><a href="#past">PAST</a></li>
+            <li id="disappear" class="grey-dash">|</li>
+            <li id="disappear"><a href="#suggest">SUGGEST</a></li>
+            <li id="disappear" class="grey-dash">|</li>
+            <li id="disappear" class="spacer"></li>
+            <li id="disappear" class="grey-dash">|</li>
             {% if not current_user.is_authenticated %}
                 <li class="login-link"><a href="{{ url_for('auth.login') }}">LOGIN</a></li>
                 <li class="grey-dash">|</li>
@@ -25,6 +25,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
                 </li>
+                <li class="grey-dash">|</li>
             {% endif %}
 
         </ul>

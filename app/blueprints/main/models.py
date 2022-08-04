@@ -50,3 +50,13 @@ class Project(db.Model):
 def load_user(user_id):
     return User.query.get(user_id)
 
+class Suggest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    problem = db.Column(db.String(250))
+    action = db.Column(db.String(250))
+    resource = db.Column(db.String(250))
+    
+
+    def __repr__(self):
+        return f'<Suggest: {self.suggest}'
+

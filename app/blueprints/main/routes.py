@@ -1,5 +1,6 @@
 from multiprocessing import context
 from flask import render_template
+from flask_login import current_user
 from app.blueprints.main.models import Project
 from . import bp as app
 from datetime import date, datetime
@@ -10,7 +11,7 @@ def home():
     projects = Project.query.all()
     context = {
         "projects": projects,
-        "user": "aaa"
+        "user": current_user
     }
     # today = datetime.datetime.utcnow()
     return render_template('index.html', **context)
@@ -40,3 +41,4 @@ def community():
 # @app.route('/contact_us')
 # def contact_us():
 #     return render_template('contact_us.html')
+
