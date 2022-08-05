@@ -60,3 +60,10 @@ class Suggest(db.Model):
     def __repr__(self):
         return f'<Suggest: {self.suggest}'
 
+class Newsletter(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(250))
+
+    def __repr__(self):
+        return f'<Newsletter: {self.newsletter}'
+
