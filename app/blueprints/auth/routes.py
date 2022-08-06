@@ -66,26 +66,6 @@ def register():
                     new_user.hash_my_password(password)
                     db.session.add(new_user)
                     db.session.commit()
-    
-                    # attempt to write location data to csv
-                    city = request.form['city']
-                    state = request.form['state']
-
-                    # This array is the fields your csv file has and in the following code
-                    # you'll see how it will be used. Change it to your actual csv's fields.
-                    fieldnames = ['city', 'state']
-
-                    # We repeat the same step as the reading, but with "w" to indicate
-                    # the file is going to be written.
-                    with open('../../static/images/map-data.csv','w') as inFile:
-                    # DictWriter will help you write the file easily by treating the
-                    # csv as a python's class and will allow you to work with
-                    # dictionaries instead of having to add the csv manually.
-                        writer = csv.DictWriter(inFile, fieldnames=fieldnames)
-
-                    # writerow() will write a row in your csv file
-                        writer.writerow({'city': city, 'state': state})
-                    # csv attempt ends
 
                     flash('User created successfully, please login', 'success')
                     return redirect(url_for('auth.login'))
