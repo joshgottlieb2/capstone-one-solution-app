@@ -41,6 +41,7 @@ class Project(db.Model):
     goal = db.Column(db.String(100))
     resource = db.Column(db.String(250))
     image_link = db.Column(db.String(250))
+    actions_completed = db.Column(db.Integer)
     
 
     def __repr__(self):

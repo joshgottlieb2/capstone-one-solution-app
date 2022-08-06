@@ -41,3 +41,26 @@ def newsletter():
         flash('Form submitted successfully!', 'success')
         return redirect(url_for('main.home'))
 
+
+@app.route("/actions_completed", methods=["POST"])
+def actions_completed():
+    
+    if current_user is None:
+        flash(f'User must be logged in to submit a completed action.', 'danger')
+        return redirect(url_for('login.html'))
+    else:
+        id = request.form['inputId']
+        target_date = request.form['inputTargetDate']
+        problem = request.form['inputProblem']
+        action = request.form['inputAction']
+        goal = request.form['inputGoal']
+        resource = request.form['inputResource']
+        image_link = request.form['inputImageLink']
+        actions_completed = request.form['inputActionsCompleted']
+        
+        suggest = Suggest(problem=problem, action=action, resource=resource)
+
+        db.session.add(suggest)
+        db.session.commit()
+        flash('New suggested project added successfully', 'success')
+        return redirect(url_for('main.home'))
