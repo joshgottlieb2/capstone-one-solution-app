@@ -310,11 +310,12 @@
                                 <td class="hidden-table">{{ p.problem }}</td>
                                 <td>{{ p.action }}</td>
                                 <td class="hidden-table">{{ p.actions_completed }}</td>
-                                <td>
-                                    <div class="check">
+                                <td class="actions-completed-column">
                                         <!-- <input type="checkbox"> -->
                                         <!-- <button class="action-button">Action Complete</button> -->
-                                        <form action="/api/actions_completed" method="POST" class="project-form">
+                                    <form action="/api/actions_completed" method="POST" class="project-form">
+                                        <div class="hidden">
+
                                             <div class="hidden">
                                                 <label for="inputId" class="hidden"></label>
                                                 <input type="text" value="{{ p.id }}" class="hidden" name="inputId">
@@ -347,10 +348,11 @@
                                                 <label for="inputActionsCompleted" class="hidden"></label>
                                                 <input type="number" class="hidden" name="inputActionsCompleted" value="{{ p.actions_completed }}">
                                             </div><br>
-                                            <input type="submit" value="Action Complete">
+                                        </div>
+                                        <input type="submit" value="Action Complete">
                                             
-                                        </form>
-                                    </div>
+                                    </form>
+                                    
                                 </td>
                             </tr>
                         {% endfor %}
