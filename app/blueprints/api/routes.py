@@ -3,7 +3,7 @@ from . import bp as app
 from flask_login import current_user
 from app import db
 from app.blueprints.main.models import Suggest
-from app.blueprints.main.models import Newsletter
+from app.blueprints.main.models import Newsletter, Project
 
  
 @app.route("/suggest", methods=["POST"])
@@ -45,9 +45,9 @@ def newsletter():
 @app.route("/actions_completed", methods=["POST"])
 def actions_completed():
     
-    if current_user is None:
+    if not current_user.is_authenticated:
         flash(f'User must be logged in to submit a completed action.', 'danger')
-        return redirect(url_for('login.html'))
+        return redirect(url_for('auth.login'))
     else:
         id = request.form['inputId']
         target_date = request.form['inputTargetDate']
@@ -58,9 +58,10 @@ def actions_completed():
         image_link = request.form['inputImageLink']
         actions_completed = request.form['inputActionsCompleted']
         
-        suggest = Suggest(problem=problem, action=action, resource=resource)
-
-        db.session.add(suggest)
+        # suggest = Suggest(problem=problem, action=action, resource=resource)
+        project=Project.query.get(id)
+        project.actions_completed=int(actions_completed)+1
+        db.session.add(project)
         db.session.commit()
         flash('New suggested project added successfully', 'success')
         return redirect(url_for('main.home'))

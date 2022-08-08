@@ -313,8 +313,8 @@
                                 <td>
                                     <div class="check">
                                         <!-- <input type="checkbox"> -->
-                                        <button class="action-button">Action Complete</button>
-                                        <!-- <form action="/api/actions_completed" method="POST" class="project-form">
+                                        <!-- <button class="action-button">Action Complete</button> -->
+                                        <form action="/api/actions_completed" method="POST" class="project-form">
                                             <div class="hidden">
                                                 <label for="inputId" class="hidden"></label>
                                                 <input type="text" value="{{ p.id }}" class="hidden" name="inputId">
@@ -345,11 +345,11 @@
                                             </div><br>
                                             <div class="hidden">
                                                 <label for="inputActionsCompleted" class="hidden"></label>
-                                                <input type="number" class="hidden" name="inputActionsCompleted" value="{{ p.actions_completed + 1 }}">
+                                                <input type="number" class="hidden" name="inputActionsCompleted" value="{{ p.actions_completed }}">
                                             </div><br>
                                             <input type="submit" value="Action Complete">
                                             
-                                        </form> -->
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
