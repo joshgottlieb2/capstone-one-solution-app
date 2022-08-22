@@ -30,34 +30,37 @@
                         <p class="subheading">{{today_date}}</p>
                     </div>
                     <div class="project-of-the-day">
-                        {% for p in projects %}
-                        {% if p.target_date == today_date %}
+                        
                         <div class="project-left">
 
                             <div> <b>THE PROBLEM</b> </div>
                             
-                            <div>{{ p.problem }}</div>
+                          
+                            <div>Children living in poverty often do not have warm winter coats.</div>
                             <div><br><b>THE ACTION</b></div>
-                            <div>{{ p.action }}</div>
+                            
+                            <div>Go through your closet and donate winter clothes to a school or goodwill.</div>
                             
                             <div><br><b>GOAL</b></div>
                             <div>
-                                {{ p.goal }}
+                             
+                                3000 donations
                             </div>
                             <div><br><b>LEARN MORE</b></div>
                             <div>
-                                Learn more <a href="{{ p.resource }}">HERE</a> <br> 
+                               
+                                Learn more <a href="https://www.americanprogress.org/article/basic-facts-children-poverty/">HERE</a> <br>
                                 
                             </div>
 
                         </div>
                         <div class="project-right">
+                          
                             <div class="issue-of-the-day-image">
-                                <img src="{{ p.image_link }}">
+                                <img src="{{ url_for('static', filename='images/winter_coats.jpg') }}">
                             </div>
                         </div>
-                        {% endif %}
-                        {% endfor %}
+                        
                     </div>
                 </div>
 
@@ -111,11 +114,11 @@
                             <li>
                                 <div>
                                     <time>DAY 1</time>
-                                    <img src="{{ url_for('static', filename='images/winter_coats.jpg') }}" alt="winter coats" class="upcoming-issues-image">
+                                    <img src="{{ url_for('static', filename='images/organ.jpg') }}" alt="organ" class="upcoming-issues-image">
                                     <p class="animation-text"> <b>PROBLEM</b> <br>
-                                        Children living in poverty often do not have warm winter coats. <br>
+                                        Many patients die while still waiting for needed donor organs due to lack of supply. <br>
                                         <b>ACTION</b><br>
-                                        Go through your closet and donate winter clothes to a school or goodwill.
+                                        Sign up to be an organ donor at www.bethematch.com
                                     </p>
                                 </div>
                             </li>
